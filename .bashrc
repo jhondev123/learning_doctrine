@@ -1,0 +1,6 @@
+alias base="php ./bin/"
+alias describe="php ./bin/doctrine.php orm:mapping:describe"
+alias info=" php ./bin/doctrine.php orm:info"
+alias showSchemaUpdate="php ./bin/doctrine.php orm:schema-tool:create --dump-sql"
+alias updateSchema="php ./bin/doctrine.php orm:schema-tool:update --force"
+alias sql-run="php ./bin/doctrine.php dbal:run-sql"

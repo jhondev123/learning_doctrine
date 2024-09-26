@@ -8,11 +8,28 @@ $entityManager = EntityManagerCreator::createEntityManager();
 $studentRepository = $entityManager->getRepository(Student::class);
 /** @var Student[] $students */
 $students = $studentRepository->findAll();
+
 foreach ($students as $student) {
     echo "ID: {$student->id}\nName: {$student->name}\n\n";
-    foreach ($student->getPhones() as $phone) {
-        echo "Phone: {$phone->number}\n\n";
-    }
+
+
+    echo "Phones: ";
+    echo implode(
+        ', ',
+        ($student->getPhones()->map(function ($phone) {
+            return $phone->number;
+        })
+        )->toArray()
+    );
+
+    echo "\n\nCourses: ";
+    echo implode(
+        ', ',
+        ($student->getCourses()->map(function ($course) {
+            return $course->getName();
+        })
+        )->toArray()
+    );
 }
 
 // print_r($studentRepository->findBy(["name" => "Jhonattan"]));
